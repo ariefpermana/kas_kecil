@@ -7,11 +7,11 @@
 	{
 		public function index()
 		{
-			if($this->session->userdata('id_peminjam')) redirect('admin');
+			//if($this->session->userdata('id_peminjam')) redirect('admin');
 
 			$data['content'] = 'page/login/index';
 
-			$this->form_validation->set_rules('username', 'Username', 'required');
+			$this->form_validation->set_rules('nik', 'NIK', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
 
 			if($this->form_validation->run()==FALSE)
@@ -21,50 +21,52 @@
 			else
 			{
 				//proses login
-				$username = $this->input->post('username');
+				$nik = $this->input->post('nik');
 				$password = $this->input->post('password');
 
 				// dapatkan data berdasarkan email dan password
-				$peminjam = $this->User_m->check_account_peminjam($username, $password);
-				$bmap	  = $this->User_m->check_account_bmap($username, $password);
+				$dataUser 		= $this->User_m->check_account($nik, $password);
 
-				//mengecek apakah email dan pass ada
-				if($peminjam)
-				{	
-					//buat session
-					$data_sess = array(
-							'id' 		=> $peminjam->id_peminjam,
-							'nama' 		=> $peminjam->nama_peminjam,
-							'username'	=> $peminjam->username_peminjam,
-							'contact' 	=> $peminjam->no_contact,
-							'email' 	=> $peminjam->email,
-							'privilege' => $peminjam->privilege,
-							'is_login'	=> TRUE
-						);
-
-					$this->session->set_userdata($data_sess);
-
-					redirect('admin');
-				}elseif($bmap)
+				if($dataUser)
 				{
-					//buat session
-					$data_sess = array(
-							'id'		 	=> $bmap->id_admin,
-							'username' 		=> $bmap->user_nama,
-							'nama' 			=> $bmap->nama,
-							'kode' 			=> $bmap->kode_admin,
-							'privilege' 	=> $bmap->privilege,
-							'is_login' 		=> TRUE
-						);
+					if ($dataUser->emp_id) 
+					{
+					
+						$emp_id = $dataUser->emp_id;
 
-					$this->session->set_userdata($data_sess);
+						//buat session
+						$data_sess = array(
+								'id' 		=> $dataUser->id,
+								'emp_id'	=> $emp_id,
+								'is_login'	=> TRUE
+							);
+						
+						$this->session->set_userdata($data_sess);
 
-					redirect('admin');
+						redirect('admin');
+					}else
+					{
+						//buat session
+						$data_sess = array(
+								'id'		 	=> $dataUser->id,
+								'username' 		=> $dataUser->nik,
+								'nama' 			=> $dataUser->nama_lengkap,
+								'kode' 			=> $dataUser->id_department,
+								'privilege' 	=> $dataUser->id_jabatan,
+								'privilege' 	=> $dataUser->gsm,
+								'privilege' 	=> $dataUser->email,
+								'is_login' 		=> TRUE
+							);
+
+						$this->session->set_userdata($data_sess);
+
+						redirect('admin');
+					}
 				}
 				else
 				{	
 					//Buat Pesan gagal Login
-					$this->session->set_flashdata('failed', 'Username or Password invalid, please fill correctly.');
+					$this->session->set_flashdata('failed', 'NIK or Password invalid, please fill correctly.');
 
 					redirect(base_url());
 

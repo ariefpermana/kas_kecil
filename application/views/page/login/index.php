@@ -1,60 +1,54 @@
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-					<div class="login100-form validate-form p-l-55 p-r-55 p-t-178">
-						<span class="login100-form-title">
-							Sign In 
-							Information System of BMAP
-						</span>
-						<!-- Alert Validation form -->
-		                <?php if($this->session->flashdata('failed')): ?>
-		                    <p class="alert alert-danger"><?php echo $this->session->flashdata('failed') ?></p>
-		                <?php endif; ?>
-		                <?php if(validation_errors()): ?>
-		                    <ul class="alert alert-danger">
-		                        <?php echo validation_errors('<li>', '</li>') ?>
-		                    </ul>
-		                <?php endif; ?>
 
-					<?php echo form_open() ?>
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
 
-						<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-							<input class="input100" type="text" name="username" placeholder="Username">
-							<span class="focus-input100"></span>
-						</div>
+        <div class="unix-login">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                        <div class="login-content card">
+                            <div class="login-form">
+	                            <div style="text-align: center;">
+	                            	<img src="<?php base_url() ?>img/logo_header.png" alt="">
+	                            </div>
+                                <h4>PT AZZAHRA TRANS UTAMA</h4>
 
-						<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-							<input class="input100" type="password" name="password" placeholder="Password">
-							<span class="focus-input100"></span>
-						</div>
+                                <!-- Alert Validation form -->
+				                <?php if($this->session->flashdata('failed')): ?>
+				                    <p class="alert alert-danger"><?php echo $this->session->flashdata('failed') ?></p>
+				                <?php endif; ?>
+				                <?php if(validation_errors()): ?>
+				                    <ul class="alert alert-danger">
+				                        <?php echo validation_errors('<li>', '</li>') ?>
+				                    </ul>
+				                <?php endif; ?>
 
-						<!-- <div class="text-right p-t-13 p-b-23">
-							<span class="txt1">
-								Forgot
-							</span>
+								<?php echo form_open() ?>
+                                    <div class="form-group">
+                                        <label>NIK</label>
+                                        <input name="nik" type="username" class="form-control" placeholder="NIK" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input name="password" type="password" class="form-control" placeholder="Password" required>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+        										<input type="checkbox"> Remember Me
+        									</label>
+                                      <!--   <label class="pull-right">
+        										<a href="#">Forgotten Password?</a>
+        									</label> -->
 
-							<a href="#" class="txt2">
-								Username / Password?
-							</a>
-						</div> -->
-							<div class="container-login100-form-btn">
-								<button class="login100-form-btn">
-									Sign in
-								</button>
-							</div>
-					<?php echo form_close() ?>
-
-						<div class="flex-col-c p-t-170 p-b-40">
-							<span class="txt1 p-b-9">
-								Don’t have an account?
-							</span>
-
-							<a href="<?php echo base_url('signup/index') ?>" class="txt3">
-								Sign up now
-							</a>
-						</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+                                    </div>
+                                    <button type="submit" name="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                                   <!--  <div class="register-link m-t-15 text-center">
+                                        <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
+                                    </div> -->
+								<?php echo form_close() ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

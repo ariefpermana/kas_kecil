@@ -2,26 +2,26 @@
 
 	Class User_m extends CI_Model {
 
-		public function check_account_peminjam($username = '', $password = '')
+		public function check_account($nik = '', $password = '')
 		{
-			$db = $this->db->get_where('peminjam', 
-				array(
-					'username_peminjam' 	=> $username, 
-					'password_peminjam' 	=> hashpassword($password)
-					)
-				)->row();
+			//dump(hashpassword($password));die;
 			
-			return $db;
-		}
-
-		public function check_account_bmap($username = '', $password = '')
-		{
-			$db = $this->db->get_where('admin', 
+			$db = $this->db->get_where('karyawan', 
 				array(
-					'user_nama' 	=> $username, 
+					'nik' 	=> $nik, 
 					'password' 	=> hashpassword($password)
 					)
 				)->row();
+
+			if(empty($db))
+			{
+				$db = $this->db->get_where('admin', 
+				array(
+					'emp_id' 	=> $nik, 
+					'password' 	=> hashpassword($password)
+					)
+				)->row();
+			}
 			
 			return $db;
 		}
@@ -46,11 +46,5 @@
 	                }
                 }
 		}
-
-		public function get_member_by_id($member_id)
-		{	
-			return $this->db->get_where('member', array('id' => $member_id))->row();
-		} 
-
 	}
  ?>

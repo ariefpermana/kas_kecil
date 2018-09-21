@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://localhost/myranishop';
-$config['base_url'] = 'http://localhost/pruta/';
+$config['base_url'] = 'http://localhost/kas/';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -314,7 +314,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'www.bmap.com';
+$config['encryption_key'] = 'www.ptatu.com';
 
 /*
 |--------------------------------------------------------------------------

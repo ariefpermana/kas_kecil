@@ -127,4 +127,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 //cara kedua untuk memanggil method pada setiap controller
-$autoload['model'] = array('User_m','Barang_m','Ormawa_m','Upload_m','Peminjaman_m');
+$autoload['model'] = array('User_m');

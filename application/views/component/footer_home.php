@@ -1,9 +1,50 @@
-	<!-- jQuery Plugins -->
-	<script type="text/javascript" src="<?php echo base_url() ?>vendors/creative/js/jquery.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url() ?>vendors/creative/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url() ?>vendors/creative/js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="<?php echo base_url() ?>vendors/creative/js/jquery.magnific-popup.js"></script>
-	<script type="text/javascript" src="<?php echo base_url() ?>vendors/creative/js/main.js"></script>
+ 
+
+           
+            <!-- End Container fluid  -->
+            <!-- footer -->
+            <footer class="footer"> © 2018 All rights reserved. <a href="https://atufacilitymanagement.com">PT. AZZAHRA TRANS UTAMA</a></footer>
+            <!-- End footer -->
+        </div>
+        <!-- End Page wrapper  -->
+ </div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="<?php base_url() ?>vendors/admin/js/lib/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="<?php base_url() ?>vendors/admin/js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="<?php base_url() ?>vendors/admin/js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="<?php base_url() ?>vendors/admin/js/jquery.slimscroll.js"></script>
+    <!--Menu sidebar -->
+    <script src="<?php base_url() ?>vendors/admin/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="<?php base_url() ?>vendors/admin/js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+
+
+    <!-- Amchart -->
+    <!-- <script src="<?php base_url() ?>vendors/admin/js/lib/morris-chart/raphael-min.js"></script>
+    <script src="<?php base_url() ?>vendors/admin/js/lib/morris-chart/morris.js"></script>
+    <script src="<?php base_url() ?>vendors/admin/js/lib/morris-chart/dashboard1-init.js"></script>
+ -->
+
+  	<script src="<?php base_url() ?>vendors/admin/js/lib/calendar-2/moment.latest.min.js"></script>
+    <!-- scripit init-->
+    <script src="<?php base_url() ?>vendors/admin/js/lib/calendar-2/semantic.ui.min.js"></script>
+    <!-- scripit init-->
+    <script src="<?php base_url() ?>vendors/admin/js/lib/calendar-2/prism.min.js"></script>
+    <!-- scripit init-->
+    <script src="<?php base_url() ?>vendors/admin/js/lib/calendar-2/pignose.calendar.min.js"></script>
+    <!-- scripit init-->
+    <script src="<?php base_url() ?>vendors/admin/js/lib/calendar-2/pignose.init.js"></script>
+
+    <script src="<?php base_url() ?>vendors/admin/js/lib/owl-carousel/owl.carousel.min.js"></script>
+    <script src="<?php base_url() ?>vendors/admin/js/lib/owl-carousel/owl.carousel-init.js"></script>
+    <script src="<?php base_url() ?>vendors/admin/js/scripts.js"></script>
+    <!-- scripit init-->
+
+    <script src="<?php base_url() ?>vendors/admin/js/custom.min.js"></script>
 
 </body>
 
