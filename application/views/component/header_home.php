@@ -86,7 +86,7 @@
                         <!-- <li class="nav-label">Controll User</li> -->
                         	<li> <a class="has-arrow  " href="<?php echo base_url('admin') ?>" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Home </span></a></li>
                         <?php if($this->session->userdata('emp_id')) : ?>
-                        	<li> <a class="has-arrow  " href="<?php echo base_url('user') ?>" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Controll User </span></a></li>
+                        	<li> <a class="has-arrow  " href="<?php echo base_url('user') ?>" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Kelola Data User </span></a></li>
                         <?php endif; ?>
                     </ul>
                 </nav>
