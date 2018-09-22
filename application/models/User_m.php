@@ -13,6 +13,10 @@
 					)
 				)->row();
 
+			$this->db->set('last_login', date('Y-m-d'));
+			$this->db->where('nik', $nik);
+			$this->db->update('karyawan');
+
 			if(empty($db))
 			{
 				$db = $this->db->get_where('admin', 
@@ -24,6 +28,11 @@
 			}
 			
 			return $db;
+		}
+
+		public function getAllUser()
+		{
+			return $this->db->get('karyawan')->result();//dapatkan total data dalam table artikel
 		}
 
 		public function user_exists($key)
@@ -45,6 +54,32 @@
 	                	return TRUE;
 	                }
                 }
+		}
+
+		public function reset($nik)
+		{
+			$this->db->set(array(
+					'password' => hashpassword($nik),
+					'update_password' => 0
+					));
+			$this->db->where('nik', $nik);
+			
+			return $this->db->update('karyawan');
+		}
+
+		public function getByNik($nik)
+		{
+			$query = $this->db->get_where('karyawan', array('nik' => $nik));
+
+			$data = $query->row();
+
+			if($data->update_password == '0')
+			{
+				return FALSE;
+			}else
+			{
+				return TRUE;
+			}
 		}
 	}
  ?>

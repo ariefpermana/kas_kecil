@@ -2268,7 +2268,7 @@ textarea {
 }
 .card-title {
   font-weight: 500;
-  font-size: 18px;
+  /*font-size: 18px;*/
   line-height: 22px;
 }
 .card-title h4 {
@@ -5831,7 +5831,8 @@ tbody tr td:last-child {
 .alert-success {
   background-color: #93ede9;
   border-color: #93ede9;
-  color: #26dad2;
+  /*color: #26dad2;*/
+  color: black;
 }
 .alert-warning {
   background-color: #ffeacd;

@@ -7,7 +7,7 @@
 	{
 		public function index()
 		{
-			//if($this->session->userdata('id_peminjam')) redirect('admin');
+			if($this->session->userdata('id_peminjam')) redirect('admin');
 
 			$data['content'] = 'page/login/index';
 

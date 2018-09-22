@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php base_url() ?>img/logo_header.png">
-    <title>PT. ATU</title>
+    <title>PT. AZZAHRA TRANS UTAMA</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php base_url() ?>vendors/admin/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -40,15 +40,15 @@
     <div id="main-wrapper">
             <!-- header header  -->
         <div class="header">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light" style="background-color: #028ee1;">
                 <!-- Logo -->
                 <div class="navbar-header">
                     <a class="navbar-brand">
                         <!-- Logo icon -->
-                        <b><img src="<?php base_url() ?>img/logo_header.png" alt="homepage" class="dark-logo" style="width: 40px; padding-left: 10px;"/></b>
+                        <b><img src="<?php base_url() ?>img/logo_header.png" alt="homepage" class="dark-logo" style="width: 70px; padding-left: 10px;"/></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span>PT. AZZAHRA TRANS UTAMA</span>
+                       <!--  <span>PT. AZZAHRA TRANS UTAMA</span> -->
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -66,7 +66,7 @@
                             <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php base_url() ?>vendors/admin/images/bookingSystem/3.png" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="<?php echo site_url('login/logout') ?>"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -84,8 +84,9 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <!-- <li class="nav-label">Controll User</li> -->
+                        	<li> <a class="has-arrow  " href="<?php echo base_url('admin') ?>" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Home </span></a></li>
                         <?php if($this->session->userdata('emp_id')) : ?>
-                        	<li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Controll User </span></a></li>
+                        	<li> <a class="has-arrow  " href="<?php echo base_url('user') ?>" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Controll User </span></a></li>
                         <?php endif; ?>
                     </ul>
                 </nav>
@@ -96,5 +97,3 @@
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
         <div class="page-wrapper">
-            
-        </div>
