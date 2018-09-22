@@ -2690,6 +2690,7 @@ table.dataTable thead .sorting::after {
 .btn {
   padding: 7px 12px;
   cursor: pointer;
+  border-radius: 0px;
 }
 .btn-group label {
   color: #ffffff !important;

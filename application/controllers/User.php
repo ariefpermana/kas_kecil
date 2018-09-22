@@ -24,7 +24,7 @@
 				}elseif($submit == 'Reset Password')
 				{
 					$nik = $this->input->post('nik');
-
+					
 					$getUpdatePass =  $this->User_m->getByNik($nik);
 
 					if($getUpdatePass == TRUE){

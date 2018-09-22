@@ -72,7 +72,7 @@
 			$query = $this->db->get_where('karyawan', array('nik' => $nik));
 
 			$data = $query->row();
-
+			
 			if($data->update_password == '0')
 			{
 				return FALSE;
