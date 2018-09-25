@@ -12,10 +12,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?php base_url() ?>img/logo_header.png">
     <title>PT. ATU</title>
     <!-- Bootstrap Core CSS -->
-    <link href="<?php base_url() ?>vendors/admin/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>vendors/admin/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="<?php base_url() ?>vendors/admin/css/helper.css" rel="stylesheet">
-    <link href="<?php base_url() ?>vendors/admin/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>vendors/admin/css/helper.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>vendors/admin/css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>

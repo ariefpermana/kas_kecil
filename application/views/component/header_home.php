@@ -9,18 +9,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php base_url() ?>img/logo_header.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url() ?>img/logo_header.png">
     <title>PT. AZZAHRA TRANS UTAMA</title>
     <!-- Bootstrap Core CSS -->
-    <link href="<?php base_url() ?>vendors/admin/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>vendors/admin/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
 
-    <link href="<?php base_url() ?>vendors/admin/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
-    <link href="<?php base_url() ?>vendors/admin/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
-    <link href="<?php base_url() ?>vendors/admin/css/lib/owl.carousel.min.css" rel="stylesheet" />
-    <link href="<?php base_url() ?>vendors/admin/css/lib/owl.theme.default.min.css" rel="stylesheet" />
-    <link href="<?php base_url() ?>vendors/admin/css/helper.css" rel="stylesheet">
-    <link href="<?php base_url() ?>vendors/admin/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>vendors/admin/css/lib/calendar2/semantic.ui.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>vendors/admin/css/lib/calendar2/pignose.calendar.min.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>vendors/admin/css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>vendors/admin/css/lib/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url() ?>vendors/admin/css/helper.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>vendors/admin/css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -45,7 +45,7 @@
                 <div class="navbar-header">
                     <a class="navbar-brand">
                         <!-- Logo icon -->
-                        <b><img src="<?php base_url() ?>img/logo_header.png" alt="homepage" class="dark-logo" style="width: 70px; padding-left: 10px;"/></b>
+                        <b><img src="<?php echo base_url() ?>img/logo_header.png" alt="homepage" class="dark-logo" style="width: 70px; padding-left: 10px;"/></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                        <!--  <span>PT. AZZAHRA TRANS UTAMA</span> -->
@@ -62,8 +62,12 @@
                     <!-- User profile and search -->
                     <ul class="navbar-nav my-lg-0">
                         <!-- Profile -->
+                        <li>
+                        <br>
+                             <p style="color:white;">Hi, <?php if(!empty($this->session->userdata('nama'))) : echo $this->session->userdata('nama'); else : echo $this->session->userdata('emp_id'); endif; ?></p>
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php base_url() ?>vendors/admin/images/bookingSystem/3.png" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url() ?>vendors/admin/images/bookingSystem/3.png" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="<?php echo site_url('login/logout') ?>"><i class="fa fa-power-off"></i> Logout</a></li>
@@ -86,7 +90,7 @@
                         <!-- <li class="nav-label">Controll User</li> -->
                         	<li> <a class="has-arrow  " href="<?php echo base_url('admin') ?>" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Home </span></a></li>
                         <?php if($this->session->userdata('emp_id')) : ?>
-                        	<li> <a class="has-arrow  " href="<?php echo base_url('user') ?>" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Kelola Data User </span></a></li>
+                        	<li> <a class="has-arrow  " href="<?php echo base_url('user') ?>" aria-expanded="false"><i class="fa fa-group"></i><span class="hide-menu">Kelola Data User </span></a></li>
                         <?php endif; ?>
                     </ul>
                 </nav>

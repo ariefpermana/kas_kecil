@@ -20,7 +20,9 @@
                                     </ul>
                                 <?php endif; ?>
                                 <div class="table-responsive m-t-40">
-                                <button class="btn-primary" type="submit">Add User</button>
+                                <a href="<?php echo base_url('user/add'); ?>">
+                                    <button class="btn-primary" type="submit">Add User</button>
+                                </a>
                                     <table id="myTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
@@ -30,6 +32,7 @@
                                                 <th>Department</th>
                                                 <th>Email</th>
                                                 <th>No. Handphone</th>
+                                                <th>Last Activity Login</th>
                                                 <th style="text-align: left;">Action</th>
                                             </tr>
                                         </thead>
@@ -41,22 +44,10 @@
                                                 <td><?php echo $i++; ?></td>
                                                 <td><?php echo $data->nik; ?></td>
                                                 <td><?php echo $data->nama_lengkap; ?></td>
-                                                <td><?php 
-                                                    if($data->kode_department == 1)
-                                                    {
-                                                        echo 'Manager';
-                                                    }else if($data->kode_department == 2)
-                                                    {
-                                                        echo 'Cashier';
-                                                    }else if($data->kode_department == 3)
-                                                    {
-                                                        echo 'GA';
-                                                    }else{
-                                                        echo 'Developer';
-                                                    }
-                                                ?></td>
+                                                <td><?php echo $data->dept; ?></td>
                                                 <td><?php echo $data->email; ?></td>
                                                 <td><?php echo $data->gsm; ?></td>
+                                                <td><?php echo $data->last_login; ?></td>
                                                 <td style="text-align: center;">
                                                 <?php echo form_open() ?>
                                                 <?php echo form_hidden('nik', $data->nik) ?>

@@ -32,7 +32,16 @@
 
 		public function getAllUser()
 		{
-			return $this->db->get('karyawan')->result();//dapatkan total data dalam table artikel
+			$query = $this->db->query('SELECT k.*, d.dept FROM karyawan as k LEFT JOIN department as d ON k.kode_department = d.kode_department');
+		
+			return $query->result();
+		}
+
+		public function getUserByNik($nik)
+		{
+			$query = $this->db->get_where('karyawan', array('nik' => $nik));
+		
+			return $query->row();
 		}
 
 		public function user_exists($key)
@@ -80,6 +89,19 @@
 			{
 				return TRUE;
 			}
+		}
+
+		public function getDepartment()
+		{
+			return $this->db->get('department')->result();
+		}
+
+		public function updateUser($nik, $data)
+		{
+		
+			$this->db->where('nik', $nik);
+			
+			return $this->db->update('karyawan',$data);
 		}
 	}
  ?>
