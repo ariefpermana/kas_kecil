@@ -8,7 +8,7 @@
 		
 		function index()
 		{
-			if(!$this->session->userdata('id')) redirect(base_url());
+			if(!$this->session->userdata('emp_id')) redirect('login');
 
 			$data['content'] = 'page/user/index';
 
@@ -55,7 +55,7 @@
 
 		public function add()
 		{
-			if(!$this->session->userdata('id')) redirect(base_url());
+			if(!$this->session->userdata('id')) redirect('login');
 
 			$data['content'] = 'page/user/add';
 
@@ -78,10 +78,22 @@
 
 				$nik = 'ATU'.date('Ymd').$bagian.'0'.rand(1,99);
 
-				if(strlen($nik) == 15)
+				if($bagian == 10)
 				{
-					$nik = 'ATU'.date('Ymd').$bagian.'00'.rand(1,9);
+					$nik = 'ATU'.date('Ymd').$bagian.rand(1,99);
+
+					if(strlen($nik) == 14)
+					{
+						$nik = 'ATU'.date('Ymd').$bagian.'0'.rand(1,9);
+					}
+				}else{
+					if(strlen($nik) == 14)
+					{
+						$nik = 'ATU'.date('Ymd').$bagian.'00'.rand(1,9);
+					}
 				}
+
+				$akses = $this->User_m->getAkses($bagian);
 
 				$data = array(
 						'nik' 				=> $nik,
@@ -90,7 +102,7 @@
 						'kode_department' 	=> $bagian,
 						'gsm'				=> $this->input->post('notelepon'),
 						'email'			 	=> $this->input->post('email'),
-						'akses'			 	=> $bagian,
+						'akses'			 	=> $akses,
 						'update_password'	=> 0,
 					);
 
@@ -109,7 +121,7 @@
 
 		public function edit()
 		{
-			if(!$this->session->userdata('id')) redirect(base_url());
+			if(!$this->session->userdata('id')) redirect('login');
 
 			$data['content'] = 'page/user/edit';
 
@@ -139,12 +151,14 @@
 					$notelepon 	= $this->input->post('notelepon');
 					$email		= $this->input->post('email');
 
+					$akses = $this->User_m->getAkses($bagian);
+
 					$data = array(
 						'nama_lengkap' 		=> $nama,
 						'kode_department'	=> $bagian,
 						'gsm'				=> $notelepon,
 						'email'				=> $email,
-						'akses'				=> $bagian
+						'akses'				=> $akses
 					);
 
 					$update = $this->User_m->updateUser($nik,$data);
@@ -159,6 +173,38 @@
 
 						redirect('user');
 					}
+				}
+			}
+		}
+
+		public function ubahPassword()
+		{
+			if(!$this->session->userdata('id')) redirect('login');
+
+			$data['content'] = 'page/user/ubah';
+
+			$this->form_validation->set_rules('new', 'New Password', 'min_length[5]');
+			$this->form_validation->set_rules('confirm', 'Confirm Password', 'min_length[5]|matches[new]');
+			
+
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('layout', $data);
+			}else{
+				$nik = $this->session->userdata('nik');
+				$confirm = $this->input->post('confirm');
+
+				$update = $this->User_m->reset($nik, $confirm);
+
+				if($update == TRUE)
+				{
+					$this->session->set_flashdata('success', 'Password berhasil di Ubah');
+
+					redirect('admin');
+				}else{
+					$this->session->set_flashdata('failed', 'Password gagal di Ubah');
+
+					redirect('admin');
 				}
 			}
 		}

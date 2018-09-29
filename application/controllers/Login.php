@@ -49,12 +49,12 @@
 						//buat session
 						$data_sess = array(
 								'id'		 	=> $dataUser->id,
-								'username' 		=> $dataUser->nik,
+								'nik' 			=> $dataUser->nik,
 								'nama' 			=> $dataUser->nama_lengkap,
-								'kode' 			=> $dataUser->id_department,
-								'privilege' 	=> $dataUser->id_jabatan,
-								'privilege' 	=> $dataUser->gsm,
-								'privilege' 	=> $dataUser->email,
+								'kode' 			=> $dataUser->kode_department,
+								'phone'		 	=> $dataUser->gsm,
+								'email'		 	=> $dataUser->email,
+								'akses'		 	=> $dataUser->akses,
 								'is_login' 		=> TRUE
 							);
 

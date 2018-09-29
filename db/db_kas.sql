@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2018 at 09:47 PM
--- Server version: 10.1.22-MariaDB
--- PHP Version: 7.1.4
+-- Generation Time: Sep 30, 2018 at 05:42 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,24 +52,24 @@ CREATE TABLE `department` (
   `id` int(10) NOT NULL,
   `kode_department` varchar(5) NOT NULL,
   `dept` varchar(15) NOT NULL,
-  `status` enum('Y','N') NOT NULL
+  `kode_akses` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='select * from e_department';
 
 --
 -- Dumping data for table `department`
 --
 
-INSERT INTO `department` (`id`, `kode_department`, `dept`, `status`) VALUES
-(1, '1', 'IT', 'Y'),
-(3, '2', 'GA', 'Y'),
-(4, '3', 'Developer', 'Y'),
-(5, '4', 'Finance', 'Y'),
-(6, '5', 'Quality Control', 'Y'),
-(7, '6', 'General Affair', 'Y'),
-(8, '7', 'Cashier', 'Y'),
-(9, '8', 'Marketing', 'Y'),
-(10, '9', 'OB', 'Y'),
-(11, '10', 'Direksi', 'Y');
+INSERT INTO `department` (`id`, `kode_department`, `dept`, `kode_akses`) VALUES
+(1, '1', 'IT', 5),
+(3, '2', 'General Affair', 1),
+(4, '3', 'Developer', 5),
+(5, '4', 'Finance', 2),
+(6, '5', 'Quality Control', 5),
+(7, '6', 'Admin Manager', 2),
+(8, '7', 'Cashier', 3),
+(9, '8', 'Marketing', 5),
+(10, '9', 'OB', 5),
+(11, '10', 'Direksi', 4);
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ INSERT INTO `department` (`id`, `kode_department`, `dept`, `status`) VALUES
 
 CREATE TABLE `karyawan` (
   `id` int(10) NOT NULL,
-  `nik` varchar(12) NOT NULL,
+  `nik` varchar(16) NOT NULL,
   `password` varchar(128) NOT NULL,
   `nama_lengkap` varchar(45) NOT NULL,
   `kode_department` int(10) NOT NULL,
@@ -95,47 +95,12 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id`, `nik`, `password`, `nama_lengkap`, `kode_department`, `gsm`, `email`, `akses`, `update_password`, `last_login`) VALUES
-(1, '20180001', 'd90456ccf61a746a8e332bcda9b4290a84761b68e2a09bd0083b668b7fd666305036589dca7a0ac559be58864a72c874d5f408b63d04c1a847b801ea66e42c17', 'Tiopan indra', 0, '089687927359', 'tiopan.wahyudi@gmail.com', 0, 0, '2018-09-22'),
-(2, '20180002', '', 'tiopan wahyudi', 0, '089687927359', 'wahyudi@gmail.com', 0, 0, '0000-00-00'),
-(3, '20180003', '', 'ga', 3, '089687927359', 'ga@gmail.com', 2, 0, '0000-00-00'),
-(4, '20180004', '', 'manager', 1, '089687927359', 'manager@gmail.com', 3, 0, '0000-00-00'),
-(5, '20180005', '', 'cashier', 2, '089687927359', 'cashier@gmail.com', 4, 0, '0000-00-00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `menu`
---
-
-CREATE TABLE `menu` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `link` varchar(50) NOT NULL,
-  `icon` varchar(30) NOT NULL,
-  `is_active` int(1) NOT NULL,
-  `is_parent` int(1) NOT NULL,
-  `akses` varchar(10) NOT NULL,
-  `aktif` enum('Y','N') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `menu`
---
-
-INSERT INTO `menu` (`id`, `name`, `link`, `icon`, `is_active`, `is_parent`, `akses`, `aktif`) VALUES
-(15, 'menu management', 'menu', 'fa fa-list-alt', 1, 5, '5', 'Y'),
-(36, 'pengajuan', 'tbl_pengajuan', 'fa fa-money', 1, 0, '0', 'Y'),
-(37, 'GA Verifikasi', 'tbl_ga', 'fa fa-plus', 1, 0, '2', 'Y'),
-(38, 'Keuangan Verifikasi', 'tbl_manager', 'fa fa-plus', 1, 0, '3', 'Y'),
-(39, 'upload bukti', 'tbl_upload', 'fa fa-camera', 1, 0, '0', 'Y'),
-(40, 'report', 'tbl_report', 'fa fa-list', 1, 0, '3', 'Y'),
-(41, 'report bulanan', 'tbl_report', 'fa fa-list', 1, 40, '3', 'Y'),
-(42, 'report departemen', 'tbl_report', 'fa fa-list', 1, 41, '3', 'Y'),
-(43, 'report progres', 'tbl_report_progress', 'fa fa-list', 1, 40, '3', 'Y'),
-(44, 'cetak ', 'tbl_cetak', 'fa fa-list', 1, 0, '4', 'Y'),
-(45, 'bukti transaksi', 'tbl_kasirtransaksi', 'fa fa-list', 1, 0, '4', 'Y'),
-(46, 'jurnal', 'tbl_jurnal', 'fa fa-book', 1, 0, '3', 'Y'),
-(47, 'input saldo', 'tbl_saldo', 'fa fa-pencil', 1, 0, '3', 'Y');
+(8, 'ATU201809254061', '8b036d2857447d37c4f2bfcad0bbbcdfdaab6796fd60257c61139549c05ad7d3a456029908c4c0cf06d22b2748c3982aaa49e7ad10254d2fa6d609f93009397b', 'Agis Puspita', 4, '081297326740', 'agis@gmail.com', 2, 0, '2018-09-30'),
+(9, 'ATU201809251004', '2289aad83a8fe15e4abbdd0af222f83245d2a255250b49d6836e34b299b9590dabd6072644249033b757f3d49b8fae9ae2808dbea73cbf657e846141e7d9fb03', 'Arief Permana', 10, '081297326740', 'ariefpermana93@gmail.com', 5, 0, '2018-09-29'),
+(10, 'ATU201809261001', '84c5fde67e7dc2c67cc9e494699d3b4ac1fe46e0838ae946e3e07221af8dc8a9d4b277702988079793002551ee9dd97736b17937dc7eb0b8eb8884dec66d82c4', 'Asta Maringis', 1, '081297326740', 'asta@gmail.com', 5, 0, '0000-00-00'),
+(11, 'ATU201809262009', 'f8d0f685c4e12b9c537519dc26d0ba5864171cc9c587313b15a5e461dff14ab565118a415e6e8cdbdf46cb41a833101d1be6e304b4089f91e4190c3d4273a983', 'Sodikin', 2, '082198918928', 'GA@gmail.com', 1, 0, '2018-09-30'),
+(14, 'ATU201809271092', '18ee70abb5d878c1c991065a0aec8197987e6abec9286dd198853737ff21f02e89027e6d23a224b292be4df7475f85059f4b6e82ea2bdde1a32a8e25fd7b8793', 'Dermawan Cahyadi', 10, '082198918928', 'dermawan@gmail.com', 4, 0, '2018-09-27'),
+(15, 'ATU201809277068', '1b568692625bbda6ddbd45c7ce923a4ee0b3e102cc945f35b35b7dab1a8a57b359d0471a456d2d09ad426d89142ed98730ed78dcfa198a927faaac8f3cc0ffc4', 'Sri Suryaningsih', 7, '082918289182', 'srie@gmail.com', 3, 0, '2018-09-30');
 
 -- --------------------------------------------------------
 
@@ -145,23 +110,26 @@ INSERT INTO `menu` (`id`, `name`, `link`, `icon`, `is_active`, `is_parent`, `aks
 
 CREATE TABLE `pengajuan` (
   `id` int(10) NOT NULL,
-  `email_karyawan` varchar(100) NOT NULL,
+  `nik` varchar(100) NOT NULL,
   `tgl_pengajuan` date NOT NULL,
-  `no_pengajuan` int(10) NOT NULL,
+  `no_pengajuan` varchar(15) NOT NULL,
   `keterangan` varchar(110) NOT NULL,
   `harga` int(10) NOT NULL,
-  `ver_ga` int(2) NOT NULL,
-  `ver_keuangan` int(2) NOT NULL
+  `doc_upload` varchar(120) NOT NULL,
+  `status` int(2) NOT NULL,
+  `reason` varchar(128) NOT NULL,
+  `kode_dept` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengajuan`
 --
 
-INSERT INTO `pengajuan` (`id`, `email_karyawan`, `tgl_pengajuan`, `no_pengajuan`, `keterangan`, `harga`, `ver_ga`, `ver_keuangan`) VALUES
-(1, 'tiopan.wahyudi@gmail.com', '2018-09-14', 201809, 'Pembelian galon minum', 1112, 0, 0),
-(2, 'tiopan.wahyudi@gmail.com', '2018-09-15', 201810, 'Pembelian Oli Mesin Mobil GA', 34500, 0, 0),
-(3, 'tiopan.wahyudi@gmail.com', '2018-09-14', 201811, 'Pembelian sparepart motor', 3421, 0, 0);
+INSERT INTO `pengajuan` (`id`, `nik`, `tgl_pengajuan`, `no_pengajuan`, `keterangan`, `harga`, `doc_upload`, `status`, `reason`, `kode_dept`) VALUES
+(5, 'ATU201809251004', '2018-09-26', 'NB20180926267', 'Transport Ke Luar Kota', 500000, 'SGO_Logo_Horizontal_Putih_CMYK7.jpg', 4, '', '1'),
+(6, 'ATU201809251004', '2018-09-26', 'NB20180926289', 'Bensin', 500000, 'SGO_Logo_Horizontal_Putih_CMYK8.jpg', 4, '', '1'),
+(7, 'ATU201809251004', '2018-09-26', 'NB20180926564', 'Biaya makan uang lembur', 50000, 'windows10hero1.jpg', 5, 'Bon tidak jelas gambarnya', '1'),
+(8, 'ATU201809251004', '2018-09-29', 'NB20180930225', 'Transport Instalasi Perangkat Ke Luar Kota', 1000000, 'windows10hero11.jpg', 4, '', '2');
 
 -- --------------------------------------------------------
 
@@ -173,42 +141,26 @@ CREATE TABLE `saldo` (
   `id` int(10) NOT NULL,
   `date` date NOT NULL,
   `kredit` int(10) NOT NULL,
-  `debit` int(11) NOT NULL,
-  `keterangan` varchar(115) NOT NULL
+  `debet` int(11) NOT NULL,
+  `no_bukti` varchar(115) NOT NULL,
+  `keterangan` varchar(120) NOT NULL,
+  `saldo` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `saldo`
 --
 
-INSERT INTO `saldo` (`id`, `date`, `kredit`, `debit`, `keterangan`) VALUES
-(2, '2018-09-12', 5000000, 0, 'Penambahan saldo bulanan'),
-(3, '2018-09-12', 0, 500000, 'Pembelian Oli Mesin Mobil GA'),
-(4, '2018-09-12', 0, 800000, 'Pembelian Oli Mesin Mobil GA');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `upload`
---
-
-CREATE TABLE `upload` (
-  `id` int(10) NOT NULL,
-  `tgl_upload` date NOT NULL,
-  `nomor_pengajuan` varchar(110) NOT NULL,
-  `file` varchar(115) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `upload`
---
-
-INSERT INTO `upload` (`id`, `tgl_upload`, `nomor_pengajuan`, `file`) VALUES
-(2, '2018-09-03', '20180000', 'file_8563.png'),
-(3, '2018-09-03', '20180001\r\n', 'file_85563.png'),
-(4, '2018-09-14', '20180001', 'file_13526.jpeg'),
-(5, '2018-09-14', '20180001', 'file_17176.jpeg'),
-(6, '2018-09-14', '20180001', 'file_4465.jpeg');
+INSERT INTO `saldo` (`id`, `date`, `kredit`, `debet`, `no_bukti`, `keterangan`, `saldo`) VALUES
+(2, '2018-08-26', 0, 5000000, '', 'Saldo Bulan Agustus', 5000000),
+(3, '2018-09-26', 500000, 0, 'NB20180926267', 'Transport Ke Luar Kota', 4500000),
+(4, '2018-09-26', 500000, 0, 'NB20180926289', 'Bensin', 4000000),
+(5, '2018-09-26', 0, 5000000, '', 'Saldo Bulan September', 9000000),
+(6, '2018-09-26', 0, 5000000, '', 'Saldo Bulan September', 14000000),
+(8, '2018-09-28', 0, 1000000, '', 'Penambahan Saldo 28-09-2018', 15000000),
+(9, '2018-09-26', 0, 5000000, '', 'Saldo Bulan September', 20000000),
+(10, '2018-09-30', 0, 2000000, '', 'Penambahan Saldo 30-09-2018', 22000000),
+(11, '2018-09-29', 1000000, 0, 'NB20180930225', 'Transport Instalasi Perangkat Ke Luar Kota', 21000000);
 
 --
 -- Indexes for dumped tables
@@ -233,12 +185,6 @@ ALTER TABLE `karyawan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
@@ -250,12 +196,6 @@ ALTER TABLE `pengajuan`
 ALTER TABLE `saldo`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id` (`id`);
-
---
--- Indexes for table `upload`
---
-ALTER TABLE `upload`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -275,27 +215,17 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `menu`
---
-ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `saldo`
 --
 ALTER TABLE `saldo`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `upload`
---
-ALTER TABLE `upload`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;COMMIT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

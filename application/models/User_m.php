@@ -65,12 +65,25 @@
                 }
 		}
 
-		public function reset($nik)
-		{
-			$this->db->set(array(
+		public function reset($nik = null, $confirm =  null)
+		{	
+			if(!empty($confirm))
+			{
+				$count = $this->db->query('SELECT update_password FROM karyawan WHERE nik = "'.$nik.'"')->row();
+				$totUpdate = intval($count->update_password);
+
+				$cek = $this->db->set(array(
+					'password' => hashpassword($confirm),
+					'update_password' => $totUpdate+1
+					));
+
+			}else{
+				$this->db->set(array(
 					'password' => hashpassword($nik),
 					'update_password' => 0
 					));
+			}
+			
 			$this->db->where('nik', $nik);
 			
 			return $this->db->update('karyawan');
@@ -96,12 +109,24 @@
 			return $this->db->get('department')->result();
 		}
 
+		public function getDepartmentByKode($kode_department)
+		{
+			return $this->db->get_where('department', array('kode_department' => $kode_department))->result_array();
+		}
+
 		public function updateUser($nik, $data)
 		{
 		
 			$this->db->where('nik', $nik);
 			
 			return $this->db->update('karyawan',$data);
+		}
+
+		public function getAkses($bagian)
+		{
+			$query = $this->db->query('SELECT kode_akses FROM department WHERE kode_department = "'.$bagian.'"')->row();
+
+			return $data = $query->kode_akses;
 		}
 	}
  ?>

@@ -1,0 +1,7 @@
+{
+    "name": "arief/kas",
+    "description": "Percobaan install composer package",
+    "require": {
+       "mpdf/mpdf" : "^7.1"
+    }
+}

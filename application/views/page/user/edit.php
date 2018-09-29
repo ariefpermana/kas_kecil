@@ -32,7 +32,7 @@
                                 </div>
                                 <!--/row-->
                                 <div class="col-md-12">
-                                    <div class="form-group has-success">
+                                    <div class="form-group">
                                         <label class="control-label">Bagian</label>
                                         <select class="form-control" name="bagian" required>
                                             <option value="0">Pilih Bagian</option>}
