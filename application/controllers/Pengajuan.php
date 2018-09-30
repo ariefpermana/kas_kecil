@@ -40,7 +40,8 @@
 						'keterangan'		=> $keterangan,
 						'harga'				=> $harga,
 						'doc_upload'		=> $upload['file_name'],
-						'status'			=> 1
+						'status'			=> 1,
+						'kode_dept'			=> $this->session->userdata('kode'),
 
 					);
 
@@ -71,17 +72,6 @@
 
 			$this->load->view('layout', $data);
 		}
-
-		public function cobapdf()
-	    {
-	       	$mpdf = new \Mpdf\Mpdf();
-	        // Buat HTML atau load dari view
-	        $html = $this->load->view('page/verifikasi/index', $this->data, true);
-	 
-	        // Lakukan pengerjaan PDF
-	        $mpdf->WriteHTML($html);
-	        $mpdf->Output("output.pdf", 'I');
-	    }
 	}
 
  ?>

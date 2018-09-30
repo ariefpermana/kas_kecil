@@ -18,13 +18,13 @@
 
 			if($submit)
 			{
-				if($submit == 'Edit')
+				if($submit == 'Detail')
 				{
 					$nik = $this->input->post('nik');
 
 					$this->session->set_userdata('nik', $nik);
 
-					redirect('user/edit');
+					redirect('user/detail');
 
 				}elseif($submit == 'Reset Password')
 				{
@@ -51,6 +51,47 @@
 
 				$this->load->view('layout', $data);
 			}
+		}
+
+		public function detail()
+		{
+			if(!$this->session->userdata('id')) redirect('login');
+
+			$data['content'] = 'page/user/detail';
+
+			$data['department'] = $this->User_m->getDepartment();
+
+			$nik = $this->session->userdata('nik');
+
+			$getUser = $this->User_m->getUserByNik($nik);
+
+			$data['user'] = $getUser;
+	
+			$bagian = $this->input->post('bagian');
+
+			if($this->input->post('submit') == 'Edit')
+			{
+				$this->session->set_userdata('nik', $nik);
+
+				redirect('user/edit');
+			}elseif($this->input->post('submit') == 'Delete') {
+
+				$deleteUser = $this->User_m->deleteUser($nik);
+
+				if($deleteUser == TRUE)
+				{
+					$this->session->set_flashdata('success', 'User dengan NIK '.$nik.' Berhasil di Delete.');
+
+					redirect('user');
+				}else
+				{
+					$this->session->set_flashdata('failed', 'User dengan NIK '.$nik.' Gagal di Delete.');
+
+					redirect('user');
+				}
+			}
+			
+			$this->load->view('layout', $data);
 		}
 
 		public function add()

@@ -30,8 +30,6 @@
                                                 <th>NIK</th>
                                                 <th>Nama</th>
                                                 <th>Department</th>
-                                                <th>Email</th>
-                                                <th>No. Handphone</th>
                                                 <th>Last Activity Login</th>
                                                 <th style="text-align: left;">Action</th>
                                             </tr>
@@ -45,13 +43,11 @@
                                                 <td><?php echo $data->nik; ?></td>
                                                 <td><?php echo $data->nama_lengkap; ?></td>
                                                 <td><?php echo $data->dept; ?></td>
-                                                <td><?php echo $data->email; ?></td>
-                                                <td><?php echo $data->gsm; ?></td>
                                                 <td><?php echo $data->last_login; ?></td>
                                                 <td style="text-align: center;">
                                                 <?php echo form_open() ?>
                                                 <?php echo form_hidden('nik', $data->nik) ?>
-                                                    <input name="submit" type="submit" value="Edit" class="btn btn-info">
+                                                    <input name="submit" type="submit" value="Detail" class="btn btn-info">
                                                     <input name="submit" type="submit" value="Reset Password" class="btn btn-danger">
                                                 <?php echo form_close() ?>
                                                 </td>

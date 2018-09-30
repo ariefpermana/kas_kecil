@@ -27,14 +27,14 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">Nama</label>
-                                            <input type="text" name="name" value="<?php echo $user->nama_lengkap; ?>" class="form-control" placeholder="Agis Puspita" required>
+                                            <input type="text" name="name" value="<?php echo $user->nama_lengkap; ?>" class="form-control" placeholder="Agis Puspita" disabled>
                                     </div>
                                 </div>
                                 <!--/row-->
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">Bagian</label>
-                                        <select class="form-control" name="bagian" required>
+                                        <select class="form-control" name="bagian" disabled>
                                             <option value="0">Pilih Bagian</option>}
                                             <?php foreach ($department as $key => $value) : 
                                                 if($user->kode_department == $value->kode_department) :
@@ -50,21 +50,22 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">No. Telepon</label>
-                                        <input type="tel" name="notelepon" value="<?php echo $user->gsm; ?>" class="form-control" placeholder="081297326740" required>
+                                        <input type="tel" name="notelepon" value="<?php echo $user->gsm; ?>" class="form-control" placeholder="081297326740" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">Email</label>
-                                        <input type="email" name="email" value="<?php echo $user->email; ?>" class="form-control" placeholder="agis@gmail.com" required>
+                                        <input type="email" name="email" value="<?php echo $user->email; ?>" class="form-control" placeholder="agis@gmail.com" disabled>
                                     </div>
                                 </div>
                             </div>
                             <br>
                             <div class="form-actions">
                                 <?php echo form_hidden('nik', $user->nik); ?>
-                                <button type="submit" name="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                                <a href="<?php echo site_url('user/detail') ?>" class="btn btn-danger">Cancel</a>
+                                <a href="<?php echo site_url('user') ?>" class="btn btn-primary"> <i class="fa fa-undo"></i> Back</a>
+                                <button type="submit" name="submit" Value="Edit" class="btn btn-success"> <i class="fa fa-check"></i> Edit</button>
+                                <button type="submit" name="submit" value="Delete" class="btn btn-danger"> <i class="fa fa-trash"></i> Delete</button>                           
                             </div>
                         <?php echo form_close() ?>
                     </div>

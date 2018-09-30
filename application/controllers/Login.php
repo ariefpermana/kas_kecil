@@ -68,7 +68,7 @@
 					//Buat Pesan gagal Login
 					$this->session->set_flashdata('failed', 'NIK or Password invalid, please fill correctly.');
 
-					redirect(base_url());
+					redirect(base_url('login'));
 
 				}
 			}
@@ -79,6 +79,6 @@
 			
 			$this->session->sess_destroy();
 
-			redirect(base_url());
+			redirect(base_url('login'));
 		}
 	}

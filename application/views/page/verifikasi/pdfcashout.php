@@ -61,7 +61,12 @@
                                         <tr>
                                             <td>Tanggal Pengajuan</td>
                                             <td>:</td>
-                                            <td style="border-bottom: 1px solid #9479ff;padding-bottom:0px;"><?php echo $cetak['date']; ?></td>
+                                            <td style="border-bottom: 1px solid #9479ff;padding-bottom:0px;">
+                                                <?php
+                                                    $date = date_create($cetak['date']);
+                                                    echo date_format($date, 'd F Y'); 
+                                                ?>
+                                            </td>
                                             <td></td>
                                         </tr>
                                         <tr>

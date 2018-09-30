@@ -58,6 +58,17 @@
 					foreach ($data['pengajuan'] as $key => $value) {
 						$harga = (int)$value->harga;
 					}
+	
+					$getDataPengajuan	= $this->Pengajuan_m->getDataByNB($nopengajuan);
+
+					$cekUser = $this->User_m->getUserByNik($getDataPengajuan['nik']);
+
+					if($cekUser == NULL)
+					{
+						$this->session->set_flashdata('failed', 'Maaf Pengajuan dengan Nomor Bukti '.$nopengajuan.' Tidak Valid dan NIK '.$getDataPengajuan['nik'].' Tidak Terdaftar!');
+
+						redirect('verifikasi');
+					}
 
 					$lastSaldo = $this->Saldo_m->getLastSaldo();
 
@@ -75,11 +86,11 @@
 					if($update == TRUE)
 					{	
 
-						$getDataPengajuan	= $this->Pengajuan_m->getDataByNB($nopengajuan);
-
 						$saldo['saldo'] = (int)$lastSaldo - (int)$harga;
 
 						$dataInsert = array_merge($getDataPengajuan, $saldo);
+
+						unset($dataInsert['nik']);
 
 						$insertSaldo = $this->db->insert('saldo', $dataInsert);
 
@@ -178,7 +189,7 @@
 
 				if(empty($dataUser))
 				{
-					$this->session->set_flashdata('failed', 'Pengajuan Sudah Kadaluwarsa dan NIK sudah tidak terdaftar');
+					$this->session->set_flashdata('failed', 'Pengajuan Sudah Kadaluwarsa dan NIK '.$datapengajuan['nik'].'  sudah tidak terdaftar');
 
 					redirect('verifikasi/bukti_dana_keluar');
 				}

@@ -8,6 +8,17 @@
                                 <h1 class="card-title">Cetak Bukti Dana Keluar</h1>
                                 <!-- <h6 class="card-subtitle">Untuk menambah dan mengedit user</h6> -->
                                 <br>
+                                <?php if($this->session->flashdata('success')): ?>
+                                    <p class="alert alert-success"><?php echo $this->session->flashdata('success') ?></p>
+                                <?php endif; ?>
+                                <?php if($this->session->flashdata('failed')): ?>
+                                    <p class="alert alert-danger"><?php echo $this->session->flashdata('failed') ?></p>
+                                <?php endif; ?>
+                                <?php if(validation_errors()): ?>
+                                    <ul class="alert alert-danger">
+                                        <?php echo validation_errors('<li>', '</li>') ?>
+                                    </ul>
+                                <?php endif; ?>
                                 <div class="table-responsive m-t-40">
                                     <table id="myTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>

@@ -128,5 +128,12 @@
 
 			return $data = $query->kode_akses;
 		}
+
+		public function deleteUser($nik)
+		{
+			$this->db->where('nik', $nik);
+			
+      		return $this->db->delete('karyawan'); 
+		}
 	}
  ?>
