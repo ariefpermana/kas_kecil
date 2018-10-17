@@ -29,7 +29,7 @@
                                                 <th>Tanggal Pengajuan</th>
                                                 <th>Keterangan</th>
                                                 <th>Jumlah</th>
-                                                <th>Bukti Document</th>
+                                                <th>Bukti Transaksi</th>
                                                 <th>Reason</th>
                                                 <th style="text-align: left;">Status</th>
                                             </tr>
@@ -52,16 +52,19 @@
                                                     {
                                                         echo 'Waiting To Approve GA';
                                                     }elseif ($data->status == 2) {
-                                                        echo 'Waiting To Approve Manager';
+                                                        echo 'Waiting To Approve Finance/Finance Manager';
                                                     }elseif ($data->status == 3) {
-                                                        echo 'Waiting To Approve Cashier';
+                                                        //echo 'Waiting To Approve Cashier';
+                                                        echo 'Waiting To Cashout.';
                                                     }elseif($data->status == 5)
                                                     {
                                                         echo 'Rejected By GA';
                                                     }elseif ($data->status == 6) {
-                                                        echo 'Rejected By Manager';
+                                                        echo 'Rejected By Finance/Finance Manager';
                                                     }elseif ($data->status == 7) {
                                                         echo 'Rejected By Cashier';
+                                                    }elseif ($data->status == 8) {
+                                                        echo 'Pending Less Saldo';
                                                     }else{
                                                         echo 'Approved for Cashout.';
                                                     }

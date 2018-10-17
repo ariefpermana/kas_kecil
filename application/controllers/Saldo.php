@@ -15,6 +15,17 @@
 
 			$data['saldo'] = $lastSaldo;
 
+			$getLastinput = $this->Saldo_m->getLastinput();
+
+			$intervalDay = intval(date('d')) - intval($getLastinput[0]['Day']);
+
+			if($intervalDay < 11)
+			{
+				$data['intervalDay'] = 'disabled';
+			}else{
+				$data['intervalDay'] = '';
+			}
+
 			if($this->input->post('submit') == 'Save')
 			{
 				$saldo = str_replace(',', '', $this->input->post('saldo'));
@@ -23,7 +34,8 @@
 
 				$data = array(
 						'date' 			=> date('Y-m-d'),
-						'keterangan' 	=> 'Penambahan Saldo '.date('d-m-Y'),
+						'no_akun' 		=> '1111',
+						'keterangan' 	=> 'Tambahan Kas Kecil '.date('d M Y'),
 						'debet'			=> $saldo,
 						'saldo'			=> $totSaldo,
 					);

@@ -109,16 +109,28 @@
                         <?php endif; ?>
 
                         <?php if($this->session->userdata('akses') != 4 && $this->session->userdata('akses')) : ?>
-                        <li> <a class="has-arrow  " href="<?php echo base_url('pengajuan/index') ?>" aria-expanded="false"><i class="fa fa-file-o"></i><span class="hide-menu">Pengajuan Kas Kecil </span></a></li>
-                        <?php endif; ?>
-                        
-                        <?php if(($this->session->userdata('akses') != 5 && $this->session->userdata('akses') != 4) && $this->session->userdata('akses')) : ?>
-                        <li> <a class="has-arrow  " href="<?php echo base_url('verifikasi') ?>" aria-expanded="false"><i class="fa fa-check-square-o"></i><span class="hide-menu">Verifikasi </span></a></li>
-                        <?php endif; ?>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-edit"></i><span class="hide-menu">Pengajuan </span></a>
+                            <ul aria-expanded="false" class="collapse">
 
-                        <?php if($this->session->userdata('akses') != 4 && $this->session->userdata('akses')) : ?>
-                        <li> <a class="has-arrow  " href="<?php echo base_url('pengajuan/proses_pengajuan') ?>" aria-expanded="false"><i class="fa fa-tasks"></i><span class="hide-menu">Proses Pengajuan </span></a></li>
-                        <?php endif; ?>
+                                <?php if($this->session->userdata('akses') != 4 && $this->session->userdata('akses')) : ?>
+                                <li><a href="<?php echo base_url('pengajuan/index') ?>"><i class="fa fa-file-o"></i> Pengajuan Kas Kecil </a></li> 
+                                <?php endif; ?>
+
+                                <?php if(($this->session->userdata('akses') == 1 || $this->session->userdata('akses') == 2) && $this->session->userdata('akses')) : ?>
+                                <li> <a href="<?php echo base_url('verifikasi') ?>"><i class="fa fa-check-square-o"></i> Verifikasi </a></li>
+                                <?php endif; ?>
+
+                                <?php if($this->session->userdata('akses') != 4 && $this->session->userdata('akses')) : ?>
+                                <li> <a href="<?php echo base_url('pengajuan/proses_pengajuan') ?>"><i class="fa fa-tasks"></i> Proses Pengajuan </a></li>
+                                <?php endif; ?>
+
+                                <?php if($this->session->userdata('akses') == 2 && $this->session->userdata('akses')) : ?>
+                                <li> <a href="<?php echo base_url('pengajuan/pending') ?>"><i class="fa fa-ellipsis-h"></i> Pending Pengajuan </a></li>
+                                <?php endif; ?>
+
+                            </ul>
+                        </li>     
+                        <?php endif; ?>   
 
                         <?php if(/*$this->session->userdata('akses') == 5 || */$this->session->userdata('akses') == 3) : ?>
                         <li> <a class="has-arrow  " href="<?php echo base_url('verifikasi/bukti_dana_keluar') ?>" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Bukti Dana Keluar </span></a></li>
@@ -127,9 +139,9 @@
                         <?php if($this->session->userdata('akses') != 5 && $this->session->userdata('akses')) : ?>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-pie-chart"></i><span class="hide-menu">Laporan </span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url('laporan/perbagian') ?>">Laporan Perbagian</a></li>
-                                <li><a href="<?php echo base_url('laporan/bulanan') ?>">Laporan Bulanan</a></li>
-                                <li><a href="<?php echo base_url('laporan/jurnal') ?>">Laporan Jurnal</a></li>
+                                <li><a href="<?php echo base_url('laporan/perbagian') ?>"><i class="fa fa-street-view"></i> Laporan Perbagian</a></li>
+                                <li><a href="<?php echo base_url('laporan/bulanan') ?>"><i class="fa fa-calendar-check-o"></i> Laporan Bulanan</a></li>
+                                <li><a href="<?php echo base_url('laporan/jurnal') ?>"><i class="fa fa-line-chart"></i>       Laporan Jurnal</a></li>
                             </ul>
                         </li>
                         <?php endif; ?>

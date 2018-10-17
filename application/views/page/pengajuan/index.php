@@ -26,47 +26,54 @@
                                 <?php if($this->session->flashdata('image')): ?>
                                     <?php echo $this->session->flashdata('image') ?>
                                 <?php endif; ?>
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">Tanggal Permintaan</label>
                                             <input type="date" name="tglpermintaan" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--/row-->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">Keterangan Permintaan</label>
-                                        <input type="text" name="keterangan" class="form-control" required>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Kategori</label>
+                                            <select class="form-control" name="kategori" required>
+                                                <option value="0">Pilih Kategori</option>
+                                                <?php foreach ($kategori as $key => $value) : ?>
+                                                <option value="<?php echo $value->kode_kategori; ?>"><?php echo $value->nama_kategori; ?></option>
+                                            <?php endforeach; ?>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--/row-->
-                               <!--  <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">Kategori</label>
-                                        <input type="tel" name="kategori" class="form-control" placeholder="081297326740" required>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Keterangan Permintaan</label>
+                                            <input type="text" name="keterangan" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div> -->
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">Jumlah Harga</label>
-                                        <div class="row">
-                                            <div class="col-md-2" style="padding-left:20px;padding-top:10px;padding-right:0px">
-                                                <h4>Rp.</h4>
-                                            </div>
-                                            <div class="col-md-10">
-                                                <input type="text" name="jumlah" class="form-control currency" id="currency" data-separator="," required>
+                                
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Jumlah Harga</label>
+                                            <div class="row">
+                                                <div class="col-md-2" style="padding-left:20px;padding-top:10px;padding-right:0px">
+                                                    <h4>Rp.</h4>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input type="text" name="jumlah" class="form-control currency" id="currency" data-separator="," required>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">Upload Bukti Transaksi</label>
-                                        <input type="file" name="bukti" class="form-control" required>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Upload Bukti Transaksi</label>
+                                            <input type="file" name="bukti" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div>
                             </div>
                             <br>
                             <div class="form-actions">

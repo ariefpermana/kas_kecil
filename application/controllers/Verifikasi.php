@@ -17,6 +17,7 @@
 			$data['pengajuan']	= $this->Pengajuan_m->getDataByAkses($akses);
 
 			$nopengajuan = $this->input->post('no_pengajuan');
+
 			$action = $this->input->post('submit');
 
 			if($action == 'Approve')
@@ -38,22 +39,22 @@
 						redirect('verifikasi');
 					}
 				}elseif($akses == 2)
-				{
-					$status = 3;
+				// {
+				// 	$status = 3;
 
-					$update = $this->Pengajuan_m->verifyPengajuan($nopengajuan, $status, $action);
+				// 	$update = $this->Pengajuan_m->verifyPengajuan($nopengajuan, $status, $action);
 
-					if($update == TRUE)
-					{
-						$this->session->set_flashdata('success', 'Pengajuan Berhasil di Approve');
+				// 	if($update == TRUE)
+				// 	{
+				// 		$this->session->set_flashdata('success', 'Pengajuan Berhasil di Approve');
 
-						redirect('verifikasi');
-					}else{
-						$this->session->set_flashdata('success', 'Pengajuan Gagal di Approve');
+				// 		redirect('verifikasi');
+				// 	}else{
+				// 		$this->session->set_flashdata('success', 'Pengajuan Gagal di Approve');
 
-						redirect('verifikasi');
-					}
-				}elseif($akses == 3)
+				// 		redirect('verifikasi');
+				// 	}
+				// }elseif($akses == 3)
 				{	
 					foreach ($data['pengajuan'] as $key => $value) {
 						$harga = (int)$value->harga;
@@ -79,7 +80,8 @@
 						redirect('verifikasi');
 					}
 
-					$status = 4;
+					//$status = 4;
+					$status = 3;
 
 					$update = $this->Pengajuan_m->verifyPengajuan($nopengajuan, $status, $action);
 
@@ -146,7 +148,7 @@
 
 							redirect('verifikasi');
 						}
-					}elseif($akses == 3)
+					}/*elseif($akses == 3)
 					{
 						$status = 7;
 
@@ -162,7 +164,22 @@
 
 							redirect('verifikasi');
 						}
-					}
+					}*/
+				}
+			}elseif($action == 'Pending'){
+				$status = 8;
+
+				$update = $this->Pengajuan_m->verifyPengajuan($nopengajuan, $status, $action, $reason);
+
+				if($update == TRUE)
+				{
+					$this->session->set_flashdata('success', 'Pengajuan Berhasil di Pending');
+
+					redirect('verifikasi');
+				}else{
+					$this->session->set_flashdata('success', 'Pengajuan Gagal di Pending');
+
+					redirect('verifikasi');
 				}
 			}else{
 
@@ -177,7 +194,9 @@
 
 			$data['content'] = 'page/verifikasi/cashout';
 
-			$data['cetak'] = $this->Pengajuan_m->getDataCetak();
+			$status = '3';//approve by finance/finance manager
+
+			$data['cetak'] = $this->Pengajuan_m->getDataByStatus($status);
 
 			if($this->input->post('submit') == 'print')
 			{

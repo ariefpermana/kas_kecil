@@ -43,8 +43,10 @@
                                         <thead>
                                             <tr>
                                                 <th>No.</th>
+                                                <th>Tanggal</th>
                                                 <th>Bagian</th>
                                                 <th>No. Bukti Pengajuan</th>
+                                                <th>No. Akun</th>
                                                 <th>Keterangan</th>
                                                 <th>Harga</th>
                                             </tr>  
@@ -55,8 +57,10 @@
                                         if($saldo) : foreach ($saldo as $key => $data) : ?>
                                             <tr>
                                                 <td><?php echo $i++; ?></td>
+                                                <td><?php if(isset($data->date)) echo $data->date; ?></td>
                                                 <td><?php echo $dept[$data->kode_dept]['dept']; ?></td>
                                                 <td><?php if(isset($data->no_bukti)) echo $data->no_bukti; ?></td>
+                                                <td><?php if(isset($data->no_akun)) echo $data->no_akun; ?></td>
                                                 <td><?php if(isset($data->keterangan)) echo $data->keterangan; ?></td>
                                                 <td><?php if(isset($data->kredit)) echo rupiah($data->kredit); ?></td>
                                             </tr>
@@ -67,7 +71,9 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td>Total</td>
+                                                <td></td>
+                                                <td></td>
+                                                <tH>Total</tH>
                                                 <th><?php if(isset($total)) echo rupiah($total); ?></th>
                                             </tr>
                                         </tbody>

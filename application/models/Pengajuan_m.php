@@ -36,10 +36,10 @@
 			}
 		}
 
-		public function getDataCetak()
-		{
-			return $this->db->get_where('pengajuan', array('status' => 4))->result();
-		}
+		// public function getDataCetak()
+		// {
+		// 	return $this->db->get_where('pengajuan', array('status' => 4))->result();
+		// }
 
 		public function getDataByNB($nb)
 		{
@@ -55,6 +55,7 @@
 			        		'nik'			=> $row->nik,
 			        		'date' 			=> $row->tgl_pengajuan,
 			        		'no_bukti'		=> $row->no_pengajuan,
+			        		'no_akun'		=> $row->kode_kategori,
 			        		'keterangan' 	=> $row->keterangan,
 			        		'kredit'		=> $row->harga,
 			        	);
@@ -63,6 +64,16 @@
 			    return $data;
 			}
 
+		}
+
+		public function getKategori()
+		{
+			return $this->db->get('kategori')->result();
+		}
+
+		public function getDataByStatus($status)
+		{
+			return $query = $this->db->get_where('pengajuan', array('status' => $status))->result();
 		}
 	}
 

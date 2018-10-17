@@ -55,7 +55,9 @@
                                 <table class="table" cellspacing="0" width="100%">
                                         <tr style="background-color:#9479ff;">
                                             <th>No.</th>
+                                            <th>Tanggal</th>
                                             <th>No. Bukti Pengajuan</th>
+                                            <th>No. Akun</th>
                                             <th>Keterangan</th>
                                             <th>Debet</th>
                                             <th>Kredit</th>
@@ -68,7 +70,9 @@
                                     foreach ($saldo as $key => $data) : ?>
                                         <tr>
                                             <td><?php echo $i++; ?></td>
+                                            <td><?php if(isset($data->date)) echo $data->date; ?></td>
                                             <td><?php if(isset($data->no_bukti)) echo $data->no_bukti; ?></td>
+                                            <td><?php if(isset($data->no_akun)) echo $data->no_akun; ?></td>
                                             <td><?php if(isset($data->keterangan)) echo $data->keterangan; ?></td>
                                             <td><?php if(isset($data->debet)) echo rupiah($data->debet); ?></td>
                                             <td><?php if(isset($data->kredit)) echo rupiah($data->kredit); ?></td>
@@ -77,6 +81,8 @@
                                     <?php endforeach; ?>
                                     
                                         <tr>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td>Total</td>

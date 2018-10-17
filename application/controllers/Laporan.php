@@ -23,7 +23,7 @@
 			}else{
 				$data['saldo'] = $this->Saldo_m->getSaldoByDept();
 			}
-
+			
 			$total = 0;
 
 			foreach ($data['saldo'] as $key => $value) {
@@ -36,7 +36,7 @@
 
 				$dataDept[$value->kode_dept] = $getKode[0];
 			}
-			
+				
 			if(isset($dataDept))
 			{
 				$data['dept'] = $dataDept;
@@ -70,7 +70,7 @@
 				$data['month'] = $month;
 
 				$data['saldo'] = $this->Saldo_m->getSaldoBulanan($month);
-				
+					
 				$monthBefore = $month - 1;
 
 				$saldoBefore = $this->Saldo_m->getSaldoBefore($monthBefore);

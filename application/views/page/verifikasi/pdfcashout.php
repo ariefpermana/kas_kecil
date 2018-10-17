@@ -120,7 +120,7 @@
                                         <tr style="text-align:center;">
                                             <td style="text-align:center;">(<?php echo $cetak['nama_lengkap']; ?>)</td>
                                             <td></td>
-                                            <td style="text-align:center;">(Cashier)</td>
+                                            <td style="text-align:center;">(<?php echo $this->session->userdata('nama'); ?>)</td>
                                             <td></td>
                                         </tr>
                                     </tbody>

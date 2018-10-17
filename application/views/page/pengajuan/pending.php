@@ -5,7 +5,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h1 class="card-title">Verifikasi Data Pengajuan Karyawan</h1>
+                                <h1 class="card-title">Proses Pengajuan</h1>
                                 <!-- <h6 class="card-subtitle">Untuk menambah dan mengedit user</h6> -->
                                 <br>
                                 <?php if($this->session->flashdata('success')): ?>
@@ -29,10 +29,9 @@
                                                 <th>Tanggal Pengajuan</th>
                                                 <th>Keterangan</th>
                                                 <th>Jumlah</th>
-                                                <th>Bukti Document</th>
+                                                <th>Bukti Transaksi</th>
                                                 <th>Status</th>
-                                                <th>Reason</th>
-                                                <th style="text-align: left;">Action</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -47,25 +46,11 @@
                                                 <td><?php echo $data->keterangan; ?></td>
                                                 <td><?php echo rupiah($data->harga); ?></td>
                                                 <td><a href="<?php echo base_url() ?>uploads/<?php echo $data->doc_upload; ?>" target="_blank"><img width="50px" src="<?php echo base_url() ?>uploads/<?php echo $data->doc_upload; ?>"></a></td>
-                                                <td><?php 
-                                                    if($data->status == 1)
-                                                    {
-                                                        echo 'Waiting To Approve GA';
-                                                    }elseif ($data->status == 2) {
-                                                        echo 'Waiting To Approve Finance / Admin Manager';
-                                                    }/*elseif ($data->status == 3) {
-                                                        echo 'Waiting To Approve Cashier';
-                                                    }*/
-                                                ?></td>
-                                                <?php echo form_open() ?>
-                                                <td><textarea name="reason"></textarea></td>
+                                                <td>Pending Less Saldo</td>
                                                 <td style="text-align: center;">
+                                                    <?php echo form_open() ?>
                                                         <?php echo form_hidden('no_pengajuan', $data->no_pengajuan) ?>
                                                         <input name="submit" type="submit" value="Approve" class="btn btn-info" style="margin-top:10px; width:100px;">
-                                                        <input name="submit" type="submit" value="Reject" class="btn btn-danger" style="margin-top:10px; width:100px; ">
-                                                        <?php if($this->session->userdata('akses') == 2) : ?>
-                                                        <input name="submit" type="submit" value="Pending" class="btn btn-warning" style="margin-top:10px; width:100px;">
-                                                        <?php endif; ?>
                                                     <?php echo form_close() ?>
                                                 </td>
                                             </tr>
