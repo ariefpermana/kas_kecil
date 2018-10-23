@@ -64,12 +64,12 @@
                                             <tr>
                                                 <td><?php echo $i++; ?></td>
                                                 <td><?php if(isset($data->date)) echo $data->date; ?></td>
+                                                <td><?php if(isset($data->no_bukti)) echo $data->no_bukti; ?></td>
                                                 <td>
                                                     <?php if(isset($data->doc_upload)) : ?>
                                                     <a href="<?php echo base_url() ?>uploads/<?php echo $data->doc_upload; ?>" target="_blank"><img width="50px" src="<?php echo base_url() ?>uploads/<?php echo $data->doc_upload; ?>"></a>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td><?php if(isset($data->no_bukti)) echo $data->no_bukti; ?></td>
                                                 <td><?php if(isset($data->no_akun)) echo $data->no_akun; ?></td>
                                                 <td><?php if(isset($data->keterangan)) echo $data->keterangan; ?></td>
                                                 <td><?php if(isset($data->debet)) echo rupiah($data->debet); ?></td>
