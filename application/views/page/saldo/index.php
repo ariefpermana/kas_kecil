@@ -45,7 +45,7 @@
 	                                                <h4>Rp.</h4>
 	                                            </div>
 	                                            <div class="col-md-10">
-	                                                <input type="text" name="saldo" class="form-control currency" id="currency" data-separator="," required <?php echo $intervalDay; ?>>
+	                                                <input type="text" name="saldo" class="form-control currency" id="currency" data-separator="," required <?php //echo $intervalDay; ?>>
 	                                            </div>
 	                                        </div>
 	                                    </div>
@@ -53,10 +53,10 @@
                                 </div>
                             </div>
                             <div class="form-actions" style="text-align:right;">
-                                <button type="submit" name="submit" value="Save" class="btn btn-success" <?php echo $intervalDay; ?>> <i class="fa fa-check"></i> Save</button>
+                                <button type="submit" name="submit" value="Save" class="btn btn-success" <?php //echo $intervalDay; ?>> <i class="fa fa-check"></i> Save</button>
                             </div>
                             <br>
-                            <label style="color:red;">Note : Saldo hanya dapat diinput kembali setelah 11 hari dari input saldo sebelumnya.</label>
+                           <!--  <label style="color:red;">Note : Saldo hanya dapat diinput kembali setelah 11 hari dari input saldo sebelumnya.</label> -->
                         <?php echo form_close() ?>
                     </div>
                 </div>

@@ -17,14 +17,14 @@
 
 			$getLastinput = $this->Saldo_m->getLastinput();
 
-			$intervalDay = intval(date('d')) - intval($getLastinput[0]['Day']);
+			// $intervalDay = intval(date('d')) - intval($getLastinput[0]['Day']);
 
-			if($intervalDay < 11)
-			{
-				$data['intervalDay'] = 'disabled';
-			}else{
-				$data['intervalDay'] = '';
-			}
+			// if($intervalDay < 11)
+			// {
+			// 	$data['intervalDay'] = 'disabled';
+			// }else{
+			// 	$data['intervalDay'] = '';
+			// }
 
 			if($this->input->post('submit') == 'Save')
 			{

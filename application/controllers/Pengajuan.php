@@ -21,7 +21,7 @@
 				$this->load->view('layout', $data);
 			}else{
 				$nik 			= $this->session->userdata('nik');
-				$tglPermintaan 	= $this->input->post('tglpermintaan');
+				$tglPermintaan 	= /*$this->input->post('tglpermintaan')*/ date('Y-m-d');
 				$kategori	 	= $this->input->post('kategori');
 				$keterangan 	= $this->input->post('keterangan');
 				$harga			= str_replace(',', '', $this->input->post('jumlah'));

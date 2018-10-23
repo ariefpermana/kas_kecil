@@ -28,12 +28,12 @@
                                 <?php endif; ?>
 
                                 <div class="row">
-                                    <div class="col-md-12">
+                                   <!--  <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">Tanggal Permintaan</label>
                                             <input type="date" name="tglpermintaan" class="form-control" required>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="col-md-12">
                                         <div class="form-group">
