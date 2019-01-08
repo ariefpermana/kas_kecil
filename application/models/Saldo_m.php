@@ -32,7 +32,7 @@
 		{
 			$this->db->from('saldo');
 			$this->db->order_by("id", "desc");
-			$query = $this->db->get(); 
+			$query = $this->db->get();
 			return $query->row()->saldo;
 		}
 

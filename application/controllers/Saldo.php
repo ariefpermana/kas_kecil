@@ -11,7 +11,13 @@
 
 			$data['content'] = 'page/saldo/index';
 
-			$lastSaldo = $this->Saldo_m->getLastSaldo();
+			$getSaldo = $this->Saldo_m->getSaldo();
+
+			if($getSaldo != NULL){
+				$lastSaldo = $this->Saldo_m->getLastSaldo();;
+			}else{
+				$lastSaldo = 0;
+			}	
 
 			$data['saldo'] = $lastSaldo;
 
@@ -34,6 +40,7 @@
 
 				$data = array(
 						'date' 			=> date('Y-m-d'),
+						'no_bukti'		=> 'SAL'.date('Ymd').rand(1,999),
 						'no_akun' 		=> '1111',
 						'keterangan' 	=> 'Tambahan Kas Kecil '.date('d M Y'),
 						'debet'			=> $saldo,

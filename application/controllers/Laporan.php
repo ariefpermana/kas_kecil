@@ -322,6 +322,10 @@
 			$data['month'] = month_name($month);
 
 	       	$mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
+	       	
+	       	//ADD PASSWORD WHEN OPEN IT
+	       	//$mpdf->SetProtection(array(), 'UserPassword', 'MyPassword');
+
 	        // Buat HTML atau load dari view
 	        $html = $this->load->view('page/laporan/pdfbulanan', $data, true);
 	        //dump($html);die;
